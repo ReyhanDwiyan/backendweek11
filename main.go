@@ -15,10 +15,14 @@ import (
 )
 
 func init() {
-	err := godotenv.Load()
-	if err != nil {
-		fmt.Println("error loading environtment variables:")
-	}
+	if _, err := os.Stat(".env"); err == nil {
+		err := godotenv.Load()
+		if err != nil {
+			fmt.Println("gagal memuat file .env:")
+			} else{
+				fmt.Println("berhasil memuat file .env")
+			}
+		}
 }
 
 func main() {
